@@ -144,6 +144,12 @@ ul {
 }
 
 /* Botão de sortear título */
+.button-draw:disabled {
+    background-color: grey; /* Cor de fundo para o botão desativado */
+    color: white; /* Cor do texto para o botão desativado */
+    cursor: not-allowed; /* Cursor indicando que o botão está desativado */
+}
+
 .button-draw {
     display: flex;
     align-items: center;
@@ -169,7 +175,7 @@ ul {
 
 .button-restart {
     background-color: var(--color-button-restart); /* Cor de fundo amarela */
-    color: black; /* Cor do texto */
+    color: var(--color-white); /* Cor do texto */
     padding: 10px 40px; /* Tamanho do botão */
     font-size: 16px; /* Tamanho da fonte */
     border: none; /* Remover borda */
@@ -180,6 +186,7 @@ ul {
     width: 100%; /* Mesma largura do botão "Sortear" */
     height: 50px; /* Mesma altura do botão "Sortear" */
     margin-top: 10px; /* Margem superior para espaçamento */
+    border: 2px solid #000; /* Borda preta */
 }
 
 .button-restart:hover {

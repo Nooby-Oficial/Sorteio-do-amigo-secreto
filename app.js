@@ -4,11 +4,13 @@ let amigos = [];
 // Função para adicionar um amigo ao array e atualizar a lista
 function adicionarAmigo() {
     // Capturar o valor do campo de entrada
-    let valorEntrada = document.querySelector('#amigo').value;
+    let valorEntrada = document.querySelector('#amigo').value.trim();
 
     // Verificar se o valor de entrada está vazio
-    if (valorEntrada.trim() === '') {
+    if (valorEntrada === '') {
         alert('Por favor, insira um nome!');
+    } else if (amigos.includes(valorEntrada)) {
+        alert('Esse amigo já foi adicionado!');
     } else {
         // Adicionar o valor ao array de amigos
         amigos.push(valorEntrada);
@@ -18,6 +20,11 @@ function adicionarAmigo() {
 
         // Atualizar a lista de amigos
         atualizarListaAmigos();
+
+        // Ativar o botão "Sortear amigo" se houver mais de um amigo na lista
+        if (amigos.length > 1) {
+            document.querySelector('#botaoSortear').disabled = false;
+        }
     }
 }
 
@@ -47,6 +54,11 @@ function sortearAmigo() {
         return;
     }
 
+    if (amigos.length % 2 !== 0) {
+        alert('A quantidade de amigos deve ser par para realizar o sorteio.');
+        return;
+    }
+
     let resultado = document.querySelector('#resultado');
     resultado.innerHTML = ''; // Limpar resultado anterior
 
@@ -72,15 +84,22 @@ function sortearAmigo() {
 
 // Função para reiniciar a lista de amigos e o resultado do sorteio
 function reiniciar() {
-    // Limpar o array de amigos
-    amigos = [];
+    // Perguntar ao usuário se ele tem certeza de que deseja reiniciar
+    let confirmacao = confirm('Tem certeza que deseja reiniciar o sorteio?');
 
-    // Limpar a lista de amigos na interface
-    document.querySelector('#listaAmigos').innerHTML = '';
+    // Se o usuário confirmar, prosseguir com a reinicialização
+    if (confirmacao) {
+        // Limpar o array de amigos
+        amigos = [];
 
-    // Limpar o resultado do sorteio na interface
-    document.querySelector('#resultado').innerHTML = '';
+        // Limpar a lista de amigos na interface
+        document.querySelector('#listaAmigos').innerHTML = '';
 
-    // Desativar o botão "Reiniciar"
-    document.querySelector('#botaoReiniciar').disabled = true;
+        // Limpar o resultado do sorteio na interface
+        document.querySelector('#resultado').innerHTML = '';
+
+        // Desativar os botões "Reiniciar" e "Sortear amigo"
+        document.querySelector('#botaoReiniciar').disabled = true;
+        document.querySelector('#botaoSortear').disabled = true;
+    }
 }
