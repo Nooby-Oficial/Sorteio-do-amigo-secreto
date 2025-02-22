@@ -67,10 +67,13 @@ function sortearAmigo() {
     // Embaralhar array
     sorteados.sort(() => Math.random() - 0.5);
 
+    // Calcular a metade do número de amigos
+    let metade = Math.floor(sorteados.length / 2);
+
     // Adicionar pares de amigo secreto à lista de resultados
-    for (let i = 0; i < sorteados.length; i++) {
+    for (let i = 0; i < metade; i++) {
         let amigo = sorteados[i];
-        let amigoSecreto = sorteados[(i + 1) % sorteados.length];
+        let amigoSecreto = sorteados[i + metade];
 
         let item = document.createElement('li');
         item.textContent = `${amigo} tirou ${amigoSecreto}`;
