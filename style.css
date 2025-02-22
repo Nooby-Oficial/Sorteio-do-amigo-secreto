@@ -6,6 +6,7 @@
     --color-button-hover: #e55720;
     --color-text: #444444;
     --color-white: #FFFFFF;
+    --color-button-restart: #006eff;
 }
 
 /* Estilos gerais */
@@ -159,4 +160,28 @@ ul {
 
 .button-draw:hover {
     background-color: var(--color-button-hover);
+}
+
+.button-restart:disabled {
+    background-color: grey; /* Cor de fundo para o botão desativado */
+    cursor: not-allowed; /* Cursor indicando que o botão está desativado */
+}
+
+.button-restart {
+    background-color: var(--color-button-restart); /* Cor de fundo amarela */
+    color: black; /* Cor do texto */
+    padding: 10px 40px; /* Tamanho do botão */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Remover borda */
+    cursor: pointer; /* Alterar o cursor ao passar o mouse */
+    display: flex; /* Flexbox para alinhamento */
+    align-items: center; /* Alinhar conteúdo verticalmente */
+    justify-content: center; /* Alinhar conteúdo horizontalmente */
+    width: 100%; /* Mesma largura do botão "Sortear" */
+    height: 50px; /* Mesma altura do botão "Sortear" */
+    margin-top: 10px; /* Margem superior para espaçamento */
+}
+
+.button-restart:hover {
+    background-color: rgb(11, 129, 184); /* Cor de fundo ao passar o mouse */
 }

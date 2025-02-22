@@ -65,4 +65,22 @@ function sortearAmigo() {
 
         resultado.appendChild(item);
     }
+
+    // Ativar o botão "Reiniciar"
+    document.querySelector('#botaoReiniciar').disabled = false;
+}
+
+// Função para reiniciar a lista de amigos e o resultado do sorteio
+function reiniciar() {
+    // Limpar o array de amigos
+    amigos = [];
+
+    // Limpar a lista de amigos na interface
+    document.querySelector('#listaAmigos').innerHTML = '';
+
+    // Limpar o resultado do sorteio na interface
+    document.querySelector('#resultado').innerHTML = '';
+
+    // Desativar o botão "Reiniciar"
+    document.querySelector('#botaoReiniciar').disabled = true;
 }
